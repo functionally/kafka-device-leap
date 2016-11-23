@@ -1,7 +1,7 @@
 name:                kafka-device-leap
-version:             0.1.0.0
+version:             0.1.0.1
 synopsis:            Leap Motion events via a Kafka message broker
-description:         This package contains functions for passing Leap Motion events to topics on a Kafka message broker.
+description:         This package contains functions for passing Leap Motion \<<https://www.leapmotion.com/product/desktop>\> events to topics on a Kafka message broker \<<https://kafka.apache.org/>\>.  Also see https://hackage.haskell.org/package/kafka-device/.
 license:             MIT
 license-file:        LICENSE
 author:              Brian W Bush <consult@brianwbush.info>
@@ -13,7 +13,7 @@ cabal-version:       >= 1.10
 stability:           Experimental
 homepage:            https://bitbucket.org/functionally/kafka-device-leap
 bug-reports:         https://bwbush.atlassian.net/projects/HKADELE/issues/
-package-url:         https://bitbucket.org/functionally/kafka-device-leap/downloads/kafka-device-leap-0.1.0.0.tar.gz
+package-url:         https://bitbucket.org/functionally/kafka-device-leap/downloads/kafka-device-leap-0.1.0.1.tar.gz
 
 extra-source-files:  ReadMe.md
 

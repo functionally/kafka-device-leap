@@ -1,7 +1,20 @@
+{-|
+Module      :  Network.UI.Kafka.Leap
+Copyright   :  (c) 2016 Brian W Bush
+License     :  MIT
+Maintainer  :  Brian W Bush <consult@brianwbush.info>
+Stability   :  Experimental
+Portability :  Stable
+
+Producer events from a Leap Motion \<<https://www.leapmotion.com/product/desktop>\> controller.
+-}
+
+
 {-# LANGUAGE RecordWildCards #-}
 
 
 module Network.UI.Kafka.Leap (
+-- * Event handling
   leapApp
 ) where
 
@@ -19,7 +32,12 @@ import System.Hardware.Leap.Event.Hand as L (Hand(..), Side(..))
 import System.Hardware.Leap.Event.Pointable as L (Finger(..), Pointable(..))
 
 
-leapApp :: KafkaClientId -> KafkaAddress -> TopicName -> Sensor -> ClientApp ()
+-- | WebSocket application for producing Leap Motion events.
+leapApp :: KafkaClientId -- ^ A Kafka client identifier for the producer.
+        -> KafkaAddress  -- ^ The address of the Kafka broker.
+        -> TopicName     -- ^ The Kafka topic name.
+        -> Sensor        -- ^ The name of the sensor producing events.
+        -> ClientApp ()  -- ^ The WebSocket client application.
 leapApp clientId address topic sensor connection =
   do
     setFocused  True  connection
@@ -34,11 +52,13 @@ leapApp clientId address topic sensor connection =
     void loop
 
 
+-- | Interpret a Leap Motion event as events for Kafka.
 interpret :: L.Event Double -> [K.Event]
 interpret Tracking{..} = concatMap interpretPointable pointables
 interpret _            = [EventError "Unable to process event."]
 
 
+-- | Interpret a Leap Motion pointing event as events for Kafka.
 interpretPointable :: Pointable Double -> [K.Event]
 interpretPointable Finger{..} =
   [

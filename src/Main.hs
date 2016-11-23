@@ -1,4 +1,17 @@
+{-|
+Module      :  Main
+Copyright   :  (c) 2016 Brian W Bush
+License     :  MIT
+Maintainer  :  Brian W Bush <consult@brianwbush.info>
+Stability   :  Experimental
+Portability :  Stable
+
+Simple producer of events from a Leap Motion \<<https://www.leapmotion.com/product/desktop>\> controller.
+-}
+
+
 module Main (
+-- * Main entry
   main
 ) where
 
@@ -9,6 +22,7 @@ import System.Environment (getArgs)
 import System.Hardware.Leap (Configuration(..), run)
 
 
+-- | The main action.
 main :: IO ()
 main =
   do
@@ -27,4 +41,4 @@ main =
               (fromString kafkaHost, toEnum $ read kafkaPort)
               (fromString topic)
               sensor
-      _ -> putStrLn "USAGE: kafka-device-keyboard leap-host leap-port client kafka-host kafka-port topic senosr"
+      _ -> putStrLn "USAGE: kafka-device-leap leap-host leap-port client kafka-host kafka-port topic senosr"
