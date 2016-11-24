@@ -1,7 +1,6 @@
 Leap Motion events via a Kafka message broker
 =============================================
 
-
 This package contains functions for passing [Leap Motion](https://www.leapmotion.com/product/desktop) events to topics on a [Kafka message broker](https://kafka.apache.org/).
 
 

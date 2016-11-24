@@ -6,7 +6,7 @@ Maintainer  :  Brian W Bush <consult@brianwbush.info>
 Stability   :  Experimental
 Portability :  Stable
 
-Producer events from a Leap Motion \<<https://www.leapmotion.com/product/desktop>\> controller.
+Produce events on a Kafka topic from a Leap Motion \<<https://www.leapmotion.com/product/desktop>\> controller.
 -}
 
 
