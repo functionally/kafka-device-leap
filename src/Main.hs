@@ -16,7 +16,7 @@ module Main (
 ) where
 
 
-import Data.String (IsString(fromString))
+import Network.UI.Kafka (TopicConnection(TopicConnection))
 import Network.UI.Kafka.Leap (leapApp)
 import System.Environment (getArgs)
 import System.Hardware.Leap (Configuration(..), run)
@@ -37,8 +37,6 @@ main =
           putStrLn $ "Sensor name:   " ++ sensor
           run (Configuration leapHost $ read leapPort)
             $ leapApp
-              (fromString client)
-              (fromString kafkaHost, toEnum $ read kafkaPort)
-              (fromString topic)
+              (TopicConnection client (kafkaHost, read kafkaPort) topic)
               sensor
       _ -> putStrLn "USAGE: kafka-device-leap leap-host leap-port client kafka-host kafka-port topic senosr"

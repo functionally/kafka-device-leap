@@ -1,6 +1,6 @@
 {-|
 Module      :  Network.UI.Kafka.Leap
-Copyright   :  (c) 2016 Brian W Bush
+Copyright   :  (c) 2016-17 Brian W Bush
 License     :  MIT
 Maintainer  :  Brian W Bush <consult@brianwbush.info>
 Stability   :  Experimental
@@ -21,9 +21,7 @@ module Network.UI.Kafka.Leap (
 
 import Control.Monad (void)
 import Data.Aeson (eitherDecode)
-import Network.Kafka (KafkaAddress, KafkaClientId)
-import Network.Kafka.Protocol (TopicName)
-import Network.UI.Kafka (Sensor, producerLoop)
+import Network.UI.Kafka (Sensor, TopicConnection, producerLoop)
 import Network.UI.Kafka.Types as K (Event(..), Finger(..), Hand(..))
 import Network.WebSockets (receiveData)
 import System.Hardware.Leap (ClientApp, setFocused, setGestures)
@@ -33,17 +31,15 @@ import System.Hardware.Leap.Event.Pointable as L (Finger(..), Pointable(..))
 
 
 -- | WebSocket application for producing Leap Motion events.
-leapApp :: KafkaClientId -- ^ A Kafka client identifier for the producer.
-        -> KafkaAddress  -- ^ The address of the Kafka broker.
-        -> TopicName     -- ^ The Kafka topic name.
-        -> Sensor        -- ^ The name of the sensor producing events.
-        -> ClientApp ()  -- ^ The WebSocket client application.
-leapApp clientId address topic sensor connection =
+leapApp :: TopicConnection -- ^ The Kafka topic name and connection information.
+        -> Sensor          -- ^ The name of the sensor producing events.
+        -> ClientApp ()    -- ^ The WebSocket client application.
+leapApp topicConnection sensor connection =
   do
     setFocused  True  connection
     setGestures False connection
     (_, loop) <-
-      producerLoop clientId address topic sensor
+      producerLoop topicConnection sensor
         $ do
             event <- eitherDecode <$> receiveData connection
             case event of
