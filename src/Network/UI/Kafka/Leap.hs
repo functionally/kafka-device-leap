@@ -1,10 +1,10 @@
 {-|
-Module      :  Network.UI.Kafka.Leap
-Copyright   :  (c) 2016-17 Brian W Bush
+Module      :  $Header$
+Copyright   :  (c) 2016-19 Brian W Bush
 License     :  MIT
-Maintainer  :  Brian W Bush <consult@brianwbush.info>
-Stability   :  Experimental
-Portability :  Stable
+Maintainer  :  Brian W Bush <code@functionally.io>
+Stability   :  Production
+Portability :  Linux
 
 Produce events on a Kafka topic from a Leap Motion \<<https://www.leapmotion.com/product/desktop>\> controller.
 -}
