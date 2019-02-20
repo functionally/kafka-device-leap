@@ -24,23 +24,23 @@ source-repository head
  
 library
   exposed-modules : Network.UI.Kafka.Leap
-  build-depends   : base >= 4.8 && < 5
-                  , aeson
-                  , hleap
-                  , kafka-device
-                  , websockets
+  build-depends   : base         >= 4.8 && < 5
+                  , aeson        >= 1.3.1
+                  , hleap        >= 0.2.0
+                  , kafka-device >= 1.0.0
+                  , websockets   >= 0.12.5
   hs-source-dirs  : src
   ghc-options     : -Wall
   default-language: Haskell2010
 
 executable kafka-device-leap
   main-is         : Main.hs
-  other-modules  : Network.UI.Kafka.Leap
-  build-depends   : base
-                  , aeson
-                  , hleap
-                  , kafka-device
-                  , websockets
+  other-modules   : Network.UI.Kafka.Leap
+  build-depends   : base         >= 4.8 && < 5
+                  , aeson        >= 1.3.1
+                  , hleap        >= 0.2.0
+                  , kafka-device >= 1.0.0
+                  , websockets   >= 0.12.5
   hs-source-dirs  : src
   ghc-options     : -Wall -threaded
   default-language: Haskell2010
