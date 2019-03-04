@@ -1,5 +1,5 @@
 name         : kafka-device-leap
-version      : 1.0.0.0
+version      : 1.0.2.1
 synopsis     : Leap Motion events via a Kafka message broker
 description  : This package contains functions for passing Leap Motion \<<https://www.leapmotion.com/product/desktop>\> events to topics on a Kafka message broker \<<https://kafka.apache.org/>\>.  Also see \<https://hackage.haskell.org/package/kafka-device/>\>.
 license      : MIT
@@ -27,7 +27,7 @@ library
   build-depends   : base         >= 4.8 && < 5
                   , aeson        >= 1.3.1
                   , hleap        >= 0.2.0
-                  , kafka-device >= 1.0.0
+                  , kafka-device >= 1.0.2.1
                   , websockets   >= 0.12.5
   hs-source-dirs  : src
   ghc-options     : -Wall
@@ -39,7 +39,7 @@ executable kafka-device-leap
   build-depends   : base         >= 4.8 && < 5
                   , aeson        >= 1.3.1
                   , hleap        >= 0.2.0
-                  , kafka-device >= 1.0.0
+                  , kafka-device >= 1.0.2.1
                   , websockets   >= 0.12.5
   hs-source-dirs  : src
   ghc-options     : -Wall -threaded
